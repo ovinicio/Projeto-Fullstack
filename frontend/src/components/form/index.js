@@ -12,8 +12,8 @@ export default function Form({ productList, setProductList }) {
     const [visibleButtonClient, setVisibleButtonClient] = useState(true)
     const [visibleButtonProduct, setVisibleButtonProduct] = useState(true)
     const [form, onChange, restForm] = useForm({ client: '', product: '', qty: 1, deliveryDate: '' })
-    const [dataClient, isLoadingClient, errorClient, upClient, setUpClient] = useRequestData('http://localhost:3003/clients');
-    const [dataProduct, isLoadingProduct, errorProduct] = useRequestData('http://localhost:3003/products');
+    const [dataClient, isLoadingClient, errorClient, upClient, setUpClient] = useRequestData('https://backend-market-pto0.onrender.com/clients');
+    const [dataProduct, isLoadingProduct, errorProduct] = useRequestData('https://backend-market-pto0.onrender.com/products');
     const selectClient = !isLoadingClient && dataClient && dataClient.find((dClient) => {
         return dClient.name === form.client;
     })
@@ -23,7 +23,7 @@ export default function Form({ productList, setProductList }) {
         {
             "name": form.client
         }
-        axios.post('http://localhost:3003/client', body, {})
+        axios.post('https://backend-market-pto0.onrender.com/client', body, {})
             .then((response) => {
                 setUpClient(!upClient)
                 console.log(response)
@@ -63,7 +63,7 @@ export default function Form({ productList, setProductList }) {
                 'products': productListDB
             }
 
-            axios.post('http://localhost:3003/order', body, {})
+            axios.post('https://backend-market-pto0.onrender.com/order', body, {})
                 .then((response) => {
                     goToEndOrder(navigate)
                 }).catch((error) => {

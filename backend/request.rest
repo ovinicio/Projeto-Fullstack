@@ -1,0 +1,42 @@
+### teste
+
+GET http://localhost:3003/ping
+
+### Criar cliente
+POST http://localhost:3003/client
+Content-Type: application/json
+
+{
+    "name": "Sandra"
+}
+
+### Pegar dados dos clientes
+GET http://localhost:3003/clients 
+Content-Type: application/json
+
+### Pegar produtos
+GET http://localhost:3003/products
+Content-Type: application/json
+
+### Retorna stock
+GET http://localhost:3003/stock
+Content-Type: application/json
+
+### Create Order
+POST http://localhost:3003/order
+Content-Type: application/json
+
+{
+    "fk_client": 1,
+    "delivery_date": "2023-05-08",
+    "products": [
+        {
+            "id": 1,
+            "qty": 6523
+        },
+        {
+            "id": 2,
+            "qty": 1
+        }
+    ]
+}
